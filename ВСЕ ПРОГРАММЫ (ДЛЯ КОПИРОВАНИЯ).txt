@@ -1,0 +1,84 @@
+##ЛЁГКИЙ УРОВЕНЬ СЛОЖНОСТИ##
+
+f = open ('17.easy.txt')
+
+M = []
+k = 0
+summa = 0
+year = 2000
+bestyear = 0
+maxpoints = -10 ** 5
+
+for x in f.readlines ():
+    M.append (int (x))
+
+for i in range (0, len (M)):
+    for p in range (0, len (M), 5):
+        year += 1
+        summa = sum (M [i + p:i + 5 + p])
+        if summa > maxpoints:
+            maxpoints = summa
+            bestyear = year
+        k += 1
+    if k == len (M) // 5:
+        break
+
+print (bestyear, maxpoints)
+
+
+
+##СРЕДНИЙ УРОВЕНЬ СЛОЖНОСТИ##
+
+f = open ('17.medium.txt')
+
+M = []
+TRUE = 0
+
+for x in f.readlines ():
+    M.append (int (x))
+
+
+for i in range (3, len (M)):
+    AL, AR, E, O =  M [i - 3], M [i - 2], M [i - 1], M [i]
+
+    if AR > AL and AR > E and AR > O:
+
+        TRUE += 1
+
+print (TRUE)
+
+
+
+##СЛОЖНЫЙ УРОВЕНЬ СЛОЖНОСТИ##
+
+f = open ('17.hard.txt')
+
+M = []
+F = 0
+P = 0
+
+for x in f.readlines ():
+    M.append (int (x))
+
+
+for i in range (2, len (M)):
+    C1, C2, C3 = M [i - 2], M [i - 1], M [i]
+
+    if C1 + C2 == C3:
+        F += 1
+
+    if C1 ** 2 + C2 ** 2 == C3 ** 2:
+        P += 1
+
+if F > P:
+    print ('F',F)
+else:
+    print ('P',P)
+
+
+
+
+
+
+
+
